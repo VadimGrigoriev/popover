@@ -2,6 +2,7 @@ body {
     min-height: 100vh;
     padding: 50px;
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
     font-size: 18px;
@@ -25,17 +26,52 @@ body {
 }
 
 .widget-button:hover {
-    background-color: #ff86305e;
+    border: 2px solid #FF8630;
+    background-color: #FFFFFF;
     cursor: pointer;
     transition: background-color 0.2s linear;
 }
 
-.widget-button:focus-visible {
-    border: 2px solid #FFFFFF;
-    outline: none;
+.popover {
+    color:#000000;
+    position: absolute;
+    height: 80px;
+    width: 300px;
+    border: 2px solid rgba(211, 211, 211, 0.573);
+    display: block;
 }
 
-.widget-button:focus {
-    border: 2px solid #FFFFFF;
-    outline: none;
+.popover-title {
+    background-color: rgba(211, 211, 211, 0.573);
+    padding: 5px 10px;
 }
+
+.popover-content {
+    padding: 5px 10px;
+}
+
+.popover-arrow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px 10px 0;
+    border-top-color: #fff;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-style: solid;
+  }
+  
+  .popover-arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: -10px;
+    border-width: 10px 10px 0;
+    border-top-color: rgba(0,0,0,.25);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-style: solid;
+  }

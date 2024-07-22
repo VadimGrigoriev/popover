@@ -58,7 +58,7 @@ jobs:
         with:
           node-version: 20.11.0
           cache: 'npm'
-      - run: npm
+      - run: npm ci
       - run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
