@@ -35,10 +35,10 @@ body {
 .popover {
     color:#000000;
     position: absolute;
-    height: 80px;
     width: 300px;
     border: 2px solid rgba(211, 211, 211, 0.573);
     display: block;
+    box-sizing: border-box;
 }
 
 .popover-title {
@@ -61,9 +61,9 @@ body {
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-style: solid;
-  }
+}
   
-  .popover-arrow::after {
+.popover-arrow::after {
     content: "";
     position: absolute;
     bottom: 1px;
@@ -74,4 +74,4 @@ body {
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-style: solid;
-  }
+}

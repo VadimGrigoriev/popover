@@ -6,9 +6,11 @@ export default class Popover {
 
     this.togglePopover = this.togglePopover.bind(this);
     this.handleResize = this.handleResize.bind(this);
+    this.checkAndHidePopover = this.checkAndHidePopover.bind(this);
 
     this.createPopover();
     this.widgetButton.addEventListener('click', this.togglePopover);
+    document.addEventListener('click', this.checkAndHidePopover);
     window.addEventListener('resize', this.handleResize);
     window.addEventListener('scroll', this.handleResize);
   }
@@ -42,7 +44,7 @@ export default class Popover {
     }
   }
 
-  showPopover(e) {
+  showPopover() {
     document.body.appendChild(this.popover);
     this.popover.style.display = 'block';
     this.positionPopover();
@@ -54,18 +56,22 @@ export default class Popover {
 
   positionPopover() {
     const buttonRect = this.widgetButton.getBoundingClientRect();
-    const popoverRect = this.popover.getBoundingClientRect();
-
-    const top = buttonRect.bottom;
-    const left = buttonRect.left + (buttonRect.width - popoverRect.width) / 2;
-
-    this.popover.style.bottom = `${top}px`;
-    this.popover.style.left = `${left}px`;
+    this.popover.style.bottom = `${buttonRect.bottom}px`;
   }
 
   handleResize() {
     if (this.isVisible) {
       this.positionPopover();
+    }
+  }
+
+  checkAndHidePopover(e) {
+    if (!this.isVisible) {
+      return;
+    }
+    if (!this.popover.contains(e.target) && e.target !== this.widgetButton) {
+      this.isVisible = false;
+      this.hidePopover();
     }
   }
 }
